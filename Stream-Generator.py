@@ -16,9 +16,13 @@ stream = sl.streams.StreamGenerator(
     recurring=True
 )
 
-producer = KafkaProducer(bootstrap_servers='10.0.0.12:9092')
+producer = KafkaProducer(bootstrap_servers='10.0.0.12:9092',
+                         security_protocol='SASL_PLAINTEXT',
+                         sasl_mechanism='PLAIN',
+                         sasl_plain_username='user',
+                         sasl_plain_password='iZcWS33fJQML')
 for k in range(n_chunks):
-    producer.send('topic', b'k')
+    producer.send('topic', stream.get_chunk())
 
 #poniżej wyświetlenie przykładowych chunków strumienia
 

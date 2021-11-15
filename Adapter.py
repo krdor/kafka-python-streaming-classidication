@@ -10,15 +10,18 @@ consumer = KafkaConsumer('topic',
                          sasl_mechanism='PLAIN',
                          sasl_plain_username='user',
                          sasl_plain_password='iZcWS33fJQML')
+
 for msg in consumer:
     print(msg)
 
-#how to build a sream out of this? ^
+
+# how to build a stream out of this? ^
+# stream = ?
 
 clf = GaussianNB()
-metrics = [accuracy_score, precision()]
+metrics = [accuracy_score, precision]
 evaluator = TestThenTrain(metrics)
 
 evaluator.process(stream, clf)
 
-#zapis do pliku?
+# zapis do pliku?
