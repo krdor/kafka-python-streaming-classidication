@@ -1,10 +1,7 @@
 from kafka import KafkaProducer
+import pickle
 
-producer = KafkaProducer(bootstrap_servers='10.0.0.12:9092',
-                         security_protocol='SASL_PLAINTEXT',
-                         sasl_mechanism='PLAIN',
-                         sasl_plain_username='user',
-                         sasl_plain_password='iZcWS33fJQML'
-                         )
-for i in range(100):
-    producer.send('topic', i.to_bytes(1, byteorder='big'))
+producer = KafkaProducer(bootstrap_servers='10.0.0.14:9092', value_serializer=pickle.dumps)
+
+for i in range(50):
+    producer.send('topic-one', {'key': 'test'})
