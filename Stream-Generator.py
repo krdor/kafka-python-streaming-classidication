@@ -23,8 +23,8 @@ X, y = stream._make_classification()
 producer = KafkaProducer(bootstrap_servers='10.0.0.14:9092',
                          value_serializer=pickle.dumps)
 
-producer.send('topic-one', {'X_array': X})
-producer.send('topic-one', {'y_array': y})
+producer.send('topic-one', {'Data': X})
+producer.send('topic-one', {'Data': y})
 
 # poniżej wyświetlenie przykładowych chunków strumienia
 
